@@ -110,20 +110,29 @@ export const AboutTab: React.FC<AboutTabProps> = ({
     <div className="max-w-4xl mx-auto px-4 py-6 pb-24 space-y-6">
       {/* Hero Card */}
       <div className="bg-gradient-to-tr from-emerald-950 via-stone-900 to-amber-950/80 border border-amber-800/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden islamic-pattern-bg">
-        <div className="relative z-10">
-          <span className="text-xs font-sans tracking-widest text-amber-400 uppercase bg-amber-950/70 border border-amber-600/30 px-3 py-1 rounded-full">
-            تعارف و پس منظر
-          </span>
-          <h2 className="font-nastaliq text-3xl sm:text-4xl font-bold text-amber-200 mt-3 leading-relaxed">
-            کتابِ مستطاب "احتسابِ ناصبیت"
-          </h2>
-          <p className="font-nastaliq text-lg sm:text-xl text-emerald-300 mt-1">
-            مکمل ۱۲ ضخیم جلدوں پر مشتمل فکری و تحقیقی شاہکار
-          </p>
+        <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-1 bg-gradient-to-br from-amber-400/80 via-emerald-600/40 to-amber-600/80 shadow-2xl border border-amber-400/50 shrink-0">
+            <img
+              src="/app-logo.png"
+              alt="احتساب ناصبیت آفیشل مونوگرام"
+              className="w-full h-full object-cover rounded-xl shadow-inner"
+            />
+          </div>
+          <div>
+            <span className="text-xs font-sans tracking-widest text-amber-400 uppercase bg-amber-950/70 border border-amber-600/30 px-3 py-1 rounded-full">
+              تعارف و پس منظر
+            </span>
+            <h2 className="font-nastaliq text-3xl sm:text-4xl font-bold text-amber-200 mt-2 leading-relaxed">
+              کتابِ مستطاب "احتسابِ ناصبیت"
+            </h2>
+            <p className="font-nastaliq text-lg sm:text-xl text-emerald-300 mt-1">
+              مکمل ۱۲ ضخیم جلدوں پر مشتمل فکری و تحقیقی شاہکار
+            </p>
 
-          <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mt-4 max-w-2xl font-sans">
-            "احتساب ناصبیت" امت مسلمہ کے ان فکری فتنوں کے خلاف ایک عظیم الشان، غیر جانبدار اور مدلل علمی دستاویز ہے جس میں معتبر کتبِ اہلسنت و جماعت، تفاسیر، کتبِ احادیث، اسماء الرجال اور تاریخ اسلام کے ٹھوس حوالوں سے ناصبیت کا مکمل محاکمہ کیا گیا ہے۔
-          </p>
+            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mt-3 max-w-2xl font-sans">
+              "احتساب ناصبیت" امت مسلمہ کے ان فکری فتنوں کے خلاف ایک عظیم الشان، غیر جانبدار اور مدلل علمی دستاویز ہے جس میں معتبر کتبِ اہلسنت و جماعت، تفاسیر، کتبِ احادیث، اسماء الرجال اور تاریخ اسلام کے ٹھوس حوالوں سے ناصبیت کا مکمل محاکمہ کیا گیا ہے۔
+            </p>
+          </div>
         </div>
       </div>
 

@@ -75,19 +75,18 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
           بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
         </div>
 
-        {/* Central Ornate Book Medallion */}
+        {/* Central Official App Logo */}
         <div className="relative my-4 flex items-center justify-center">
           {/* Animated Glow Halo */}
-          <div className="absolute w-36 h-36 bg-amber-500/20 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute w-44 h-44 bg-amber-500/25 rounded-3xl blur-2xl animate-pulse"></div>
 
-          {/* Golden Geometric Ring */}
-          <div className="w-32 h-32 rounded-full border-2 border-dashed border-amber-400/60 p-2 flex items-center justify-center bg-stone-900/80 shadow-2xl backdrop-blur-md">
-            <div className="w-full h-full rounded-full border border-emerald-500/40 bg-gradient-to-tr from-emerald-900 via-stone-900 to-amber-950/90 flex flex-col items-center justify-center p-3 text-center">
-              <BookOpen className="w-9 h-9 text-amber-400 mb-1" />
-              <span className="text-[10px] text-amber-200/90 font-sans uppercase tracking-widest">
-                {isEn ? '12 Volumes' : '۱۲ جلدیں'}
-              </span>
-            </div>
+          {/* Golden Framed Squircle Medallion */}
+          <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-3xl p-1 bg-gradient-to-br from-amber-400 via-emerald-600/50 to-amber-600 shadow-2xl backdrop-blur-md flex items-center justify-center">
+            <img
+              src="/app-logo.png"
+              alt="احتساب ناصبیت آفیشل لوگو"
+              className="w-full h-full object-cover rounded-[22px] shadow-inner"
+            />
           </div>
         </div>
 
@@ -99,11 +98,9 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
           <h1 className="text-4xl sm:text-5xl font-nastaliq font-bold text-amber-300 drop-shadow-[0_4px_12px_rgba(217,119,6,0.5)]">
             احتساب ناصبیت
           </h1>
-          {isEn && (
-            <div className="text-sm tracking-wider font-serif text-amber-200 mt-1 uppercase">
-              Ihtisab-e-Nasbiyat
-            </div>
-          )}
+          <div className="text-sm tracking-wider font-sans text-amber-200/90 mt-1">
+            Ehtesaab e nasbiyat
+          </div>
           <p className="text-emerald-300 font-nastaliq text-lg sm:text-xl mt-1 text-balance">
             {isEn ? 'A Monumental 12-Volume Research Encyclopedia' : 'مکمل بارہ جلدوں کا تحقیقی مجموعہ'}
           </p>

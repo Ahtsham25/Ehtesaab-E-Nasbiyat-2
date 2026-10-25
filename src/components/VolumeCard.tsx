@@ -8,7 +8,8 @@ import {
   FileText,
   Share2,
   CheckCircle2,
-  Clock
+  Clock,
+  Palette
 } from 'lucide-react';
 import { VolumeData, getReadingProgress } from '../types/book';
 import { Language, TRANSLATIONS, ENGLISH_VOLUME_DATA } from '../i18n/translations';
@@ -19,6 +20,7 @@ interface VolumeCardProps {
   onDownload: (volume: VolumeData) => void;
   onToggleBookmark: (volumeId: number) => void;
   isBookmarked: boolean;
+  onOpenEditor?: (volume: VolumeData) => void;
   lang?: Language;
 }
 
@@ -252,6 +254,17 @@ export const VolumeCard: React.FC<VolumeCardProps> = ({
           <Download className="w-3.5 h-3.5" />
           <span>{t.downloadPdf}</span>
         </button>
+
+        {/* PixelLab Photo Editor Button */}
+        {onOpenEditor && (
+          <button
+            onClick={() => onOpenEditor(volume)}
+            title={isEn ? "Open in PixelLab Editor" : "پکسل لیب فوٹو ایڈیٹر میں کھولیں"}
+            className="p-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-stone-300 hover:text-amber-400 border border-stone-800 transition-colors cursor-pointer shrink-0"
+          >
+            <Palette className="w-3.5 h-3.5" />
+          </button>
+        )}
       </div>
     </div>
   );

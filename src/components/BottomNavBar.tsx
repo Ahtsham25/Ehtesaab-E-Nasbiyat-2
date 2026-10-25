@@ -1,4 +1,4 @@
-import { Home, Download, Highlighter, Bookmark, BookOpen, Shield, Settings, GitBranch } from 'lucide-react';
+import { Home, Download, Highlighter, Bookmark, BookOpen, Shield, Settings, GitBranch, Palette } from 'lucide-react';
 import { ActiveTab } from '../types/book';
 import { Language, TRANSLATIONS } from '../i18n/translations';
 
@@ -27,6 +27,11 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
       id: 'home' as ActiveTab,
       label: t.home,
       icon: Home,
+    },
+    {
+      id: 'editor' as ActiveTab,
+      label: t.editor,
+      icon: Palette,
     },
     {
       id: 'downloads' as ActiveTab,

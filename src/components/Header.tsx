@@ -135,25 +135,27 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-5xl mx-auto px-4 py-3">
         {/* Main Header Row */}
         <div className="flex items-center justify-between gap-3">
-          {/* Logo & Title */}
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-900 via-stone-900 to-amber-900/80 border border-amber-500/40 flex items-center justify-center shadow-md">
-              <BookOpen className="w-5 h-5 text-amber-400" />
+          {/* Title & Brand (Flawless alignment without header logo as requested) */}
+          <button
+            onClick={() => {
+              setActiveTab('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex flex-col justify-center text-start cursor-pointer group focus:outline-none py-0.5 select-none"
+            title={isEn ? 'Home - Ehtesaab e nasbiyat' : 'ہوم - احتساب ناصبیت'}
+          >
+            <div className="flex items-center gap-2">
+              <h1 className="font-nastaliq text-2xl sm:text-3xl font-bold text-amber-300 group-hover:text-amber-200 transition-colors leading-none pt-1">
+                {t.appTitle}
+              </h1>
+              <span className="text-[10px] font-sans bg-emerald-950/90 text-emerald-300 border border-emerald-600/40 px-2 py-0.5 rounded-md font-semibold shrink-0">
+                {isEn ? '12 Vols' : '۱۲ جلدیں'}
+              </span>
             </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <h1 className="font-nastaliq text-2xl font-bold text-amber-300 leading-tight">
-                  {t.appTitle}
-                </h1>
-                <span className="text-[10px] font-sans bg-emerald-950/80 text-emerald-300 border border-emerald-600/40 px-1.5 py-0.5 rounded-md font-semibold">
-                  {isEn ? '12 Vols' : '۱۲ جلدیں'}
-                </span>
-              </div>
-              <p className="text-[11px] text-stone-400 font-sans">
-                {t.appSubtitle}
-              </p>
-            </div>
-          </div>
+            <p className="text-[11px] text-amber-200/75 font-sans tracking-wide mt-0.5">
+              {isEn ? 'Scholarly & Historical Encyclopedia' : 'Ehtesaab e nasbiyat'}
+            </p>
+          </button>
 
           {/* Top Actions: Language Switcher, Splash Replay, Admin */}
           <div className="flex items-center gap-1.5 sm:gap-2">

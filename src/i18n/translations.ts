@@ -92,6 +92,7 @@ export const TRANSLATIONS = {
     splashReplay: 'سپلیش',
     adminPanel: 'ایڈمن پینل',
     home: 'ہوم',
+    editor: 'فوٹو ایڈیٹر',
     downloads: 'ڈاؤن لوڈز',
     highlights: 'ہائی لائٹس',
     bookmarks: 'محفوظ شدہ',
@@ -139,7 +140,7 @@ export const TRANSLATIONS = {
     languageToggle: 'English'
   },
   en: {
-    appTitle: 'Ihtisab-e-Nasbiyat',
+    appTitle: 'Ehtesaab e nasbiyat',
     appSubtitle: 'Scholarly & Historical Encyclopedia',
     completeSet: '12 Volumes (Full Set)',
     volumesAvailable: 'Complete Set - 12 Volumes Available',
@@ -166,6 +167,7 @@ export const TRANSLATIONS = {
     splashReplay: 'Splash',
     adminPanel: 'Admin Panel',
     home: 'Home',
+    editor: 'Photo Editor',
     downloads: 'Downloads',
     highlights: 'Highlights',
     bookmarks: 'Bookmarks',

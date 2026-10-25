@@ -13,7 +13,8 @@ import { AboutTab } from './components/AboutTab';
 import { PrivacyPolicyTab } from './components/PrivacyPolicyTab';
 import { AdminPanel } from './components/AdminPanel';
 import { RecentlyOpenedCarousel } from './components/RecentlyOpenedCarousel';
-import { BookOpen, Sparkles, Download, Check, Filter } from 'lucide-react';
+import { PixelLabEditorModal } from './components/PixelLabEditorModal';
+import { BookOpen, Sparkles, Download, Check, Filter, Palette } from 'lucide-react';
 import { Language, TRANSLATIONS, ENGLISH_VOLUME_DATA } from './i18n/translations';
 import { getAllDrawings } from './utils/drawingStorage';
 import { getRecentReads, recordRecentRead, RecentReadItem, RECENT_READS_EVENT } from './utils/readingHistory';
@@ -28,6 +29,8 @@ export default function App() {
   const [recentReads, setRecentReads] = useState<RecentReadItem[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedVolumeForReading, setSelectedVolumeForReading] = useState<VolumeData | null>(null);
+  const [selectedVolumeForEditor, setSelectedVolumeForEditor] = useState<VolumeData | null>(null);
+  const [editorPage, setEditorPage] = useState<number>(1);
   const [volumeFilter, setVolumeFilter] = useState<'all' | '1-4' | '5-8' | '9-12'>('all');
   const [lang, setLang] = useState<Language>('ur');
   const [downloadToast, setDownloadToast] = useState<{ show: boolean; title: string }>({
@@ -35,6 +38,13 @@ export default function App() {
     title: '',
   });
   const [drawingsCount, setDrawingsCount] = useState<number>(0);
+
+  const handleOpenEditor = (volume?: VolumeData, page?: number) => {
+    const target = volume || selectedVolumeForReading || volumes[0];
+    setSelectedVolumeForEditor(target);
+    setEditorPage(page || target.lastReadPage || 1);
+    setActiveTab('editor');
+  };
 
   // Sync drawings count from LocalStorage
   const refreshDrawingsCount = () => {
@@ -286,8 +296,8 @@ export default function App() {
         {activeTab === 'home' && (
           <div className="max-w-5xl mx-auto px-4 py-5 pb-24 space-y-6">
             {/* Banner Section */}
-            <div className="relative rounded-3xl overflow-hidden border border-amber-900/40 bg-gradient-to-r from-emerald-950 via-stone-900 to-amber-950/80 p-5 sm:p-7 shadow-2xl islamic-pattern-bg">
-              <div className="relative z-10 max-w-2xl">
+            <div className="relative rounded-3xl overflow-hidden border border-amber-900/40 bg-gradient-to-r from-emerald-950 via-stone-900 to-amber-950/80 p-5 sm:p-7 shadow-2xl islamic-pattern-bg flex flex-col-reverse sm:flex-row items-center justify-between gap-5">
+              <div className="relative z-10 max-w-xl">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs mb-2 font-sans">
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>{t.volumesAvailable}</span>
@@ -301,10 +311,29 @@ export default function App() {
                 <p className="text-xs sm:text-sm text-stone-300 mt-2.5 leading-relaxed font-sans">
                   {t.heroDesc}
                 </p>
+
+                {/* PixelLab Photo Editor Launcher Button */}
+                <div className="mt-4 flex flex-wrap items-center gap-2.5">
+                  <button
+                    onClick={() => handleOpenEditor()}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-400 hover:from-amber-500 hover:to-amber-300 text-stone-950 font-bold text-xs sm:text-sm shadow-xl transition-all cursor-pointer font-sans"
+                  >
+                    <Palette className="w-4 h-4" />
+                    <span>{isEn ? 'PixelLab Photo Editor (Sanad Maker)' : 'پکسل لیب فوٹو ایڈیٹر (سند ساز)'}</span>
+                  </button>
+                </div>
               </div>
 
-              {/* Decorative Seal in Background */}
-              <div className={`absolute ${isEn ? 'right-6' : 'left-6'} -bottom-6 w-36 h-36 rounded-full border border-amber-500/20 opacity-40 pointer-events-none hidden sm:block`}></div>
+              {/* Official Logo Display */}
+              <div className="relative z-10 shrink-0">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-1 bg-gradient-to-tr from-amber-500/60 via-emerald-600/40 to-amber-400/80 shadow-2xl border border-amber-400/40">
+                  <img
+                    src="/app-logo.png"
+                    alt="احتساب ناصبیت آفیشل لوگو"
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Recently Opened Carousel (Top of Home Tab, 1-Tap Resumption) */}
@@ -388,6 +417,7 @@ export default function App() {
                     onRead={(volume) => handleOpenInReader(volume.id, volume.lastReadPage || 1)}
                     onDownload={(volume) => handleDownload(volume)}
                     onToggleBookmark={handleToggleBookmark}
+                    onOpenEditor={(volume) => handleOpenEditor(volume, volume.lastReadPage || 1)}
                     isBookmarked={!!vol.isBookmarked}
                     lang={lang}
                   />
@@ -395,6 +425,15 @@ export default function App() {
               </div>
             )}
           </div>
+        {/* PIXELLAB PHOTO & DUAL PAGE EDITOR TAB */}
+        {activeTab === 'editor' && (
+          <PixelLabEditorModal
+            volume={selectedVolumeForEditor || volumes[0]}
+            currentPage={editorPage}
+            onClose={() => setActiveTab('home')}
+            onPageChange={(p) => setEditorPage(p)}
+            onVolumeChange={(v) => setSelectedVolumeForEditor(v)}
+          />
         )}
 
         {/* DOWNLOADS TAB */}

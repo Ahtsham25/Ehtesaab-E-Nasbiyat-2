@@ -210,9 +210,16 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
             isShaking ? 'animate-bounce border-rose-500 ring-2 ring-rose-500/30' : ''
           }`}
         >
-          {/* Lock Icon */}
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-amber-950/80 border border-amber-500/40 flex items-center justify-center shadow-inner">
-            <Lock className="w-8 h-8 text-amber-400" />
+          {/* Logo & Lock Badge */}
+          <div className="relative w-20 h-20 mx-auto">
+            <img
+              src="/app-logo.png"
+              alt="احتساب ناصبیت لوگو"
+              className="w-20 h-20 object-cover rounded-2xl border-2 border-amber-500/50 shadow-xl"
+            />
+            <div className="absolute -bottom-2 -right-2 p-1.5 rounded-xl bg-amber-950 border border-amber-500/60 shadow-md">
+              <Lock className="w-4 h-4 text-amber-400" />
+            </div>
           </div>
 
           <div>
@@ -596,10 +603,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       <div className="bg-gradient-to-r from-stone-900 via-amber-950/60 to-stone-900 border border-amber-800/40 rounded-3xl p-6 shadow-2xl space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-amber-600/20 border border-amber-600/40 rounded-xl">
-                <GitBranch className="w-6 h-6 text-amber-400" />
-              </div>
+            <div className="flex items-center gap-3">
+              <img
+                src="/app-logo.png"
+                alt="احتساب ناصبیت لوگو"
+                className="w-12 h-12 object-cover rounded-xl border border-amber-500/50 shadow-md shadow-amber-950/40 shrink-0"
+              />
               <div>
                 <h2 className="font-nastaliq text-2xl sm:text-3xl font-bold text-amber-300 leading-tight">
                   ایڈمن پینل و گٹ ہب انٹیگریشن
